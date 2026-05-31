@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+openai
+faiss-cpu
+sentence-transformers
+pandas
+openpyxl
+python-dotenv
+numpy
+pytest
+aiosqlite
+langchain
+langchain-openai
+langchain-core
