@@ -6,9 +6,9 @@
 ![FAISS](https://img.shields.io/badge/FAISS-cpu-purple)
 ![SQLite](https://img.shields.io/badge/SQLite-session--persistence-lightgrey)
 
-**Authors:** Burak Ege Kaya — Ufuk Karacali
-**Course:** Applied Large Language Models
-**Instructor:** Ahmet Tugrul bayrak
+**Authors:** Burak Ege Kaya-Ufuk Karacali  
+**Course:** Applied Large Language Models  
+**Instructor:** Ahmet Tugrul Bayrak
 
 ---
 
@@ -190,6 +190,27 @@ All constants are in `config.py`.
 
 ---
 
+## Screenshots
+
+### House Selection
+
+![House Selection](assets/houses.jpeg)
+
+### Chat Demo
+
+![Chat Demo](assets/chat.jpeg)
+
+## House Greetings
+
+Each house has its own greeting message and sidebar motto when selected.
+
+| House      | Greeting                                                                                                                                                     |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Gryffindor | Gryffindor, where the brave at heart find their home. It is our choices that show what we truly are, far more than our abilities. Ask what you will.         |
+| Slytherin  | Slytherin; a house of ambition, cunning, and resourcefulness. Only those with the will to achieve greatness find their way here. What knowledge do you seek? |
+| Hufflepuff | Hufflepuff; where hard work, patience, and loyalty are prized above all. I will teach the lot and treat them just the same. What would you like to know?     |
+| Ravenclaw  | Wit beyond measure is man's greatest treasure. You have found Ravenclaw; where the cleverest always rise to the top. What wisdom do you seek?                |
+
 ## Quick Start
 
 **Requirements:** Python 3.9+
@@ -232,14 +253,14 @@ pytest tests/
 
 ## Challenges & What We Enjoyed
 
-|                     | Topic                                                                                                                                                                                                                                              | Detail |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| Format manipulation | Prompt-only solutions did not work — Qwen follows word count directives regardless. Required a two-layer approach: backend regex stripping before the query reaches the agent, combined with tool description instructions to clean FAISS queries. |
-| FAISS-1 bypass      | Initially FAISS-1 was called inside the LangChain tool, meaning the agent was already invoked before the direct match check. Moving the FAISS-1 check before `agent_executor.invoke()` was the correct fix.                                        |
-| Session routing     | The GET `/session/{house}/list` and GET `/session/{session_id}/messages` endpoints conflicted in FastAPI because both use a path parameter. Renaming the house endpoint to `/session/{house}/list` resolved the routing collision.                 |
-| House theming       | Building four fully independent themes from a single CSS variable set was satisfying. Each house has its own color ramp, glow, sidebar motto, greeting message, and SVG crest.                                                                     |
-| Dual FAISS          | Seeing FAISS-1 return instant answers for known questions, with no API call, working correctly end to end was the most rewarding part of the retrieval work.                                                                                       |
-| LangChain Agent     | The tool-calling architecture cleanly separates retrieval from generation. Once the agent was wired correctly, adding new retrieval behaviors required only tool description changes.                                                              |
+| Topic               | Difficulty | Detail                                                                                                                                                                                                                                            |
+| ------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Format manipulation | Hard       | Prompt-only solutions did not work; Qwen follows word count directives regardless. Required a two-layer approach: backend regex stripping before the query reaches the agent, combined with tool description instructions to clean FAISS queries. |
+| FAISS-1 bypass      | Hard       | Initially FAISS-1 was called inside the LangChain tool, meaning the agent was already invoked before the direct match check. Moving the FAISS-1 check before `agent_executor.invoke()` was the correct fix.                                       |
+| Session routing     | Hard       | The GET `/session/{house}/list` and GET `/session/{session_id}/messages` endpoints conflicted in FastAPI because both use a path parameter. Renaming the house endpoint to `/session/{house}/list` resolved the routing collision.                |
+| House theming       | Enjoyed    | Building four fully independent themes from a single CSS variable set was satisfying. Each house has its own color ramp, glow, sidebar motto, greeting message, and SVG crest.                                                                    |
+| Dual FAISS          | Enjoyed    | Seeing FAISS-1 return instant answers for known questions with no API call, working correctly end to end was the most rewarding part of the retrieval work.                                                                                       |
+| LangChain Agent     | Enjoyed    | The tool-calling architecture cleanly separates retrieval from generation. Once the agent was wired correctly, adding new retrieval behaviors required only tool description changes.                                                             |
 
 ---
 
