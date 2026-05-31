@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HarryBot</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <!-- SELECTION SCREEN -->
+    <div id="selection-screen">
+      <div class="sel-eyebrow">The Sorting Hat Awaits</div>
+      <div class="sel-title">H A R R Y B O T</div>
+      <div class="sel-sub">Choose your house to begin</div>
+
+      <div class="houses-grid">
+        <div
+          class="house-card gryffindor-card"
+          onclick="selectHouse('gryffindor')"
+        >
+          <div class="house-crest" id="crest-gryffindor"></div>
+          <div class="house-name">Gryffindor</div>
+          <div class="house-traits">Bravery, nerve,<br />chivalry & daring</div>
+          <div class="house-colors">
+            <div class="color-dot" style="background: #8b1a1a"></div>
+            <div class="color-dot" style="background: #c9a84c"></div>
+          </div>
+        </div>
+
+        <div
+          class="house-card slytherin-card"
+          onclick="selectHouse('slytherin')"
+        >
+          <div class="house-crest" id="crest-slytherin"></div>
+          <div class="house-name">Slytherin</div>
+          <div class="house-traits">
+            Ambition, cunning,<br />resourcefulness
+          </div>
+          <div class="house-colors">
+            <div class="color-dot" style="background: #1a3a2a"></div>
+            <div class="color-dot" style="background: #c0c0c0"></div>
+          </div>
+        </div>
+
+        <div
+          class="house-card hufflepuff-card"
+          onclick="selectHouse('hufflepuff')"
+        >
+          <div class="house-crest" id="crest-hufflepuff"></div>
+          <div class="house-name">Hufflepuff</div>
+          <div class="house-traits">
+            Hard work, patience,<br />loyalty & fairness
+          </div>
+          <div class="house-colors">
+            <div class="color-dot" style="background: #2a1f00"></div>
+            <div class="color-dot" style="background: #e8c84a"></div>
+          </div>
+        </div>
+
+        <div
+          class="house-card ravenclaw-card"
+          onclick="selectHouse('ravenclaw')"
+        >
+          <div class="house-crest" id="crest-ravenclaw"></div>
+          <div class="house-name">Ravenclaw</div>
+          <div class="house-traits">
+            Wisdom, creativity,<br />learning & wit
+          </div>
+          <div class="house-colors">
+            <div class="color-dot" style="background: #1a2a4a"></div>
+            <div class="color-dot" style="background: #6a9fd8"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAT APP -->
+    <div id="chat-app">
+      <div class="ambient-glow" id="ambientGlow"></div>
+
+      <header>
+        <div class="crest-icon" id="headerCrest"></div>
+        <div class="app-title">H A R R Y B O T</div>
+        <div class="house-tag" id="houseTag"></div>
+        <button class="switch-house-btn" onclick="switchHouse()">
+          SWITCH HOUSE
+        </button>
+      </header>
+
+      <div class="main">
+        <div class="sidebar">
+          <div class="sidebar-label">Conversations</div>
+          <button class="new-chat-btn" onclick="newChat()">
+            ＋ New Inquiry
+          </button>
+          <div class="history-list" id="historyList"></div>
+          <div class="sidebar-footer">
+            <div class="house-motto" id="houseMotto"></div>
+          </div>
+        </div>
+
+        <div class="chat-area">
+          <div class="messages" id="messages"></div>
+          <div class="input-area">
+            <div class="input-wrap">
+              <textarea
+                id="userInput"
+                placeholder="Ask about the wizarding world..."
+                rows="1"
+                onkeydown="handleKey(event)"
+                oninput="autoResize(this)"
+              ></textarea>
+              <button class="send-btn" onclick="sendMessage()">↑</button>
+            </div>
+            <div class="input-hint">
+              Only questions of the wizarding world shall be answered
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
